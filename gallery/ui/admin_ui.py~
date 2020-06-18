@@ -1,0 +1,73 @@
+from flask import Flask
+from flask import request
+from flask import render_template
+from secrets import get_secret_image_gallery
+import json
+import psycopg2
+
+db_name = "image_gallery"
+
+connection = None
+
+
+def get_secret():
+    jsonString = get_secret_image_gallery()
+    return json.loads(jsonString)
+
+def get_password(secret):
+    return secret['password']
+def get_host(secret):
+    return secret['host']
+def get_username(secret):
+    return secret['username']
+def get_dbname(secret):
+    return secret['database_name']
+
+def connect():
+    global connection
+    secret = get_secret()
+    connection = psycopg2.connect(host=get_host(secret), dbname=get_dbname(secret), user=get_username(secret), password=get_password(secret))
+    connection.set_session(autocommit=True)
+
+def execute(query,args=None):
+    global connection
+    cursor = connection.cursor()
+    if not args:
+        cursor.execute(query)
+    else:
+        cursor.execute(query, args)
+    return cursor
+
+
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, Michael!'
+
+@app.route('/goodbye')
+def goodbye():
+    return 'Goodbye!'
+
+@app.route('/greet/<name>')
+def greet(name):
+    return 'Nice to meet you ' + name
+
+@app.route('/add/<int:x>/<int:y>', methods = ['GET'])
+def add(x,y):
+    return 'The sum is ' + str(x + y)
+
+@app.route('/mult',methods=['POST'])
+def mult():
+    x = request.form['x']
+    y = request.form['y']
+    return 'The product is ' + str(int(x)*int(y))
+
+@app.route('/calculator/<name>')
+def calculator(name):
+    return render_template('calculator.html',name=name)
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
