@@ -7,7 +7,9 @@ fi
 #remove old soft link
 rm -f ec2-scripts/ec2-prod-latest.sh
 #update softlink
-ln -s ec2-scripts/ec2-prod-$1.sh ec2-scripts/ec2-prod-latest.sh
+cd ec2-scripts
+ln -s ec2-prod-$1.sh ec2-prod-latest.sh
+cd ..
 
 ./deploy $1
 ./deploy latest

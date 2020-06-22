@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 # Install packages
-sudo yum -y update
-sudo yum install -y emacs-nox nano tree python3
-sudo amazon-linux-extras install -y java-openjdk11
-sudo yum install -y java-11-openjdk-devel
-sudo yum install -y git
+yum -y update
+yum install -y emacs-nox nano tree python3
+amazon-linux-extras install -y java-openjdk11
+yum install -y java-11-openjdk-devel
+yum install -y git
 
 
 # Configure/install custom software
@@ -16,5 +16,5 @@ su ec2-user -c "cd ~/python-image-gallery && pip3 install -r requirements.txt --
 
 
 # Start/enable services
-sudo systemctl stop postfix
-sudo systemctl disable postfix
+systemctl stop postfix
+systemctl disable postfix
