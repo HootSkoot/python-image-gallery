@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import json
-from secrets import get_secret_image_gallery
+from .secrets import get_secret_image_gallery
 import json
 import psycopg2
 
