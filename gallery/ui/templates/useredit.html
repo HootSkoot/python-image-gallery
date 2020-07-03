@@ -7,9 +7,9 @@
     <body>
       <ht>Editor for {{name}}</h1>
 	<form action="/complete" method="POST">
-	username: <input name="username" value="{{username}}" /><br/>
-	password: <input name="password" value="{{password}}" /><br/>
-	fullname: <input name="fullname" value="{{fullname}}" /><br/>
+	username: <input name="username" value="{{user.username}}" /><br/>
+	password: <input name="password" value="{{user.password}}" /><br/>
+	fullname: <input name="fullname" value="{{user.full_name}}" /><br/>
 	<input type="submit" value="Edit" />
     </form>
     </body>

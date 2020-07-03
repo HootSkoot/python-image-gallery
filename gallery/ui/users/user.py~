@@ -1,0 +1,19 @@
+class User:
+    def __init__(self, username, password, full_name):
+        self.__username = username
+        self.__password = password
+        self.__full_name = full_name
+
+    def username(self):
+        return self.__username
+
+    def full_name(self):
+        return self.__full_name
+
+    def password(self):
+        return self.__password
+        
+    def __repr__(self):
+        return "User with username " + self.username + " password: " +self.password + " full name: " +self.full_name
+
+    

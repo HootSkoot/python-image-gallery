@@ -10,10 +10,11 @@ from .users.user import User
 from .users.postgres_user_dao import PostgresUserDAO
 app = Flask(__name__)
 
+connect()
+
 def get_user_dao():
     return PostgresUserDAO()
 
-connect()
 
 @app.route('/')
 def hello_world():

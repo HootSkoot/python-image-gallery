@@ -8,8 +8,8 @@
       <ht>ADMIN - user list</h1>
 	<form action="/useredit" method="POST">
 	<ul>
-	  {% for row in rows %}
-	  <li><input type="hidden"  name="row" value="{{row[0]}}"><button type="submit" name="btn" value="{{row[0]}}" class="btn-link"> {{row[0]}} - {{row[2]}}  </button><a href="/delete/{{row[0]}}">Delete</a></li>
+	  {% for user in rows %}
+	  <li><a href="/edit/{{user.username}}">Edit</a> {{user.username}} - {{user.full_name}}  </button><a href="/delete/{{user.username}}">Delete</a></li>
 	  {% endfor %}
 	</ul>
 	</form>
