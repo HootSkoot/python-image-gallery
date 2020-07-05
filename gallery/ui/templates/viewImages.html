@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Images</title>
+       <meta charset="utf-8"/>
+    </head>
+    <body>
+      <ht>Image List</h1>
+	<ul>
+	  {% for image in images %}
+	  <li><img src="{{ url_for('static', filename = image) }}" alt="owned" width="300px" ></li>
+	  <a href="/deleteImage/{{image}}">Delete</a>
+	  {% endfor %}
+	</ul>
+	<a href="/">Go back</a>
+    </body>
+</html>

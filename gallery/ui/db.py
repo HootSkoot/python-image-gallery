@@ -39,6 +39,7 @@ def execute(query,args=None):
         cursor.execute(query)
     else:
         cursor.execute(query, args)
+    connection.commit()
     return cursor
 
 def main():

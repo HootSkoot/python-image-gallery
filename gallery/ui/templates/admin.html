@@ -6,13 +6,12 @@
     </head>
     <body>
       <ht>ADMIN - user list</h1>
-	<form action="/useredit" method="POST">
 	<ul>
 	  {% for user in rows %}
-	  <li><a href="/edit/{{user.username}}">Edit</a> {{user.username}} - {{user.full_name}}  </button><a href="/delete/{{user.username}}">Delete</a></li>
+	  <li><a href="/admin/users/edit/{{user.username}}">Edit</a> {{user.username}} - {{user.full_name}}  </button><a href="/admin/users/delete/{{user.username}}">Delete</a></li>
 	  {% endfor %}
 	</ul>
-	</form>
-	<a href="/add">Add new user</a>
+<a href="/admin/users/add">Add new user</a>
+<a href="/">Go Back</a>
     </body>
 </html>
